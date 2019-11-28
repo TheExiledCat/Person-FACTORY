@@ -14,6 +14,9 @@ public:
 	void SetName(std::string name) {
 		username = name;
 	}
+	void SetID(int id) {
+		userID = id
+	}
 
 private:
 	std::string username;
