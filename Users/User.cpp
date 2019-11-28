@@ -10,3 +10,7 @@ User::User()
 User::~User()
 {
 }
+
+void User::SetID(int id)
+{
+}

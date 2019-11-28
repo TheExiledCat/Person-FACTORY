@@ -15,10 +15,13 @@ public:
 		username = name;
 	}
 
+	void SetID(int id);
+
 private:
 	std::string username;
 	std::string password;
 	int userID;
+	bool canRead;
 
 
 
