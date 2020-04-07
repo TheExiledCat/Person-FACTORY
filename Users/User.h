@@ -1,23 +1,17 @@
 #pragma once
 #include <string>
+#include "Admin.h"
 class User
 {
 public:
-	User();
+	User(std::string name,std::string password);                  
 	~User();
-	std::string GetName() {
+	std::string GetName(Admin a);
 
-		return username;
-
-	}
-
-	void SetName(std::string name) {
-		username = name;
-	}
-	void SetID(int id) {
-		userID = id
-	}
-
+	void SetName(std::string name,Admin a);
+	void SetID(int id,Admin a);
+	int GetID(Admin a);
+	bool CheckAdmin(User u);
 private:
 	std::string username;
 	std::string password;
