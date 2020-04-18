@@ -7,8 +7,51 @@
 #include "Database.h"
 int main()
 {
-    std::cout << "Hello World!\n";
-	Admin* Director = new Admin()
+	Database* currentDatabase = new Database();
+	Factory* currentFactory = new Factory();
+	std::cout << "Hello new admin, fill in your name for initialization\n";
+	std::string name;
+	std::string password;
+	std::cout << "Name:\n";
+
+	std::cin >> name;
+	std::cout << "Password:\n";
+	std::cin >> password;
+	Admin* Director = new Admin(name, password);
+	std::cout << "Welcome to the User Factory," << Director->GetName() << "\n";
+	std::string input;
+	while (true) {
+	start:
+		int i=Director->GetMenuOptions();
+		switch (i) {
+		default: {
+				goto start;
+				break;
+		}
+		case 1: {
+			std::string name;
+			std::string password;
+			std::cout << "Creating new User\n" << "\n";
+			std::cout << "Insert name:\n";
+			std::cin >> name;
+			std::cout << "Insert password:\n";
+			std::cin >> password;
+			Director->RequestNewUser(name, password, *currentDatabase, *currentFactory);
+			break;
+		}
+		case 2: {
+			break;
+		}
+		case 3: {
+			break;
+		}
+		case 4: {
+			break;
+		}
+		}
+	}
+	
+	return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

@@ -1,8 +1,9 @@
 #include "User.h"
 #include <iostream>
-User::User(Factory f, std::string name, std::string password, int id)
+
+
+User::User(std::string name, std::string password)
 {
-	this->ID = id;
 	this->username = name;
 	this->password = password;
 }
@@ -43,7 +44,7 @@ void User::SetName(std::string name)
 	this->username = name;
 }
 
-void User::SetPassword(Admin a, std::string password)
+void User::SetPassword( std::string password)
 {
 	
 		this->password = password;
