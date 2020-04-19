@@ -6,7 +6,7 @@ class Factory
 public:
 	Factory();
 	~Factory();
-	User CreateUser(std::string name,std::string password,Database d);
+	User CreateUser(std::string name,std::string password,Database *d,bool admin);
 	
 private:
 

@@ -1,32 +1,68 @@
 #include "Admin.h"
-
+#include "Lib.h"
 Admin:: Admin(std::string name,std::string password)
 	:User{name,password}
 {
-	
+	this->adminRights = true;
 }
 
 Admin::~Admin()
 {
 }
 
-void Admin::RequestNewUser(std::string name, std::string password, Database d, Factory f)
+void Admin::RequestNewUser( Database *d, Factory *f)
 {
-	f.CreateUser(name, password, d);
-}
-
-void Admin::ChangeUser(int ID, std::string newName, std::string newPassword,Database d)
-{
-	std::string oldName=d.GetUser(ID).GetName();
+	std::string name;
+	std::string password;
+	std::cout << "Creating new User\n" << "\n";
+	std::cout << "Insert name:\n";
+	std::cin.ignore();
+	std::getline(std::cin, name);
 	
-	d.GetUser(ID).SetName(newName);
-	d.GetUser(ID).SetPassword(newPassword);
-	std::cout << "Set user with name |" << oldName << "|'s information to:\n " << "Name: " << newName << "\n" << "Password: " << newPassword << "\n";
+
+	std::cout << "Insert password:\n";
+	std::getline(std::cin, password);
+
+	User u =f->CreateUser(name, password, d,false);
+	std::cout << "Created User: " << u.GetName() << ".\n\n";
+}
+
+void Admin::ChangeUser(Database *d)
+{
+	std::string newName;
+	std::string newPassword;
+	int id;
+	std::string input;
+	std::cin.ignore();
+	std::cout << "Which user do you want to change by ID?\n";
+	std::getline(std::cin, input);
+	
+	id = std::stoi(input, nullptr);
+	std::string oldName=d->GetUser(id)->GetName();
+	std::cout << "What should the users name be changed to?\n";
+
+	std::getline(std::cin, newName);
+	std::cout << "What should the users password be changed to?\n";
+	std::getline(std::cin, newPassword);
+	d->GetUser(id)->SetName(newName);
+	d->GetUser(id)->SetPassword(newPassword);
+	std::cout << "Set user with name |" << oldName << "| and ID |"<<d->GetUser(id)->GetID()<<"| information to:\n" << "Name: " << d->GetUser(id)->GetName() << "\n" << "Password: " << newPassword << "\n";
 
 }
 
-void Admin::RequestNewAdmin(std::string name, std::string password, Database b, Factory f)
+void Admin::RequestNewAdmin( Database* d, Factory * f)
 {
+	std::string name;
+	std::string password;
+	std::cout << "Creating new Admin" << "\n";
+	std::cout << "Insert name:\n";
+	std::cin.ignore();
+	std::getline(std::cin, name);
+	std::cout << "Insert password:\n";
+	std::getline(std::cin, password);
+
+	User* u = &f->CreateUser(name, password, d, true);
+	std::cout << "Created Admin: " << u->GetName() << ".\n\n";
 }
 
 int Admin::GetMenuOptions()
@@ -45,13 +81,13 @@ int Admin::GetMenuOptions()
 	int choice;
 	try {
 		choice = std::stoi(input);
-		if (choice > 0 && choice < std::size(this->options)) {
+		if (choice > 0 && choice <= std::size(this->options)) {
 			return choice;
 		}
 		else return -1;
 	}
 	catch(std::invalid_argument const& e){
-		std::cout << "Not a valid choice";
+		std::cout << "Not a valid choice\n";
 		return  -1;
 		
 	}

@@ -14,11 +14,12 @@ public:
 	void SetName(std::string name);
 	void SetPassword(std::string password);
 	void SetID(int id);
+	
 protected:
 	std::string username;
 	std::string password;
 	int ID;
-	bool adminRights;
+	bool adminRights=false;
 
 };
 

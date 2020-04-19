@@ -154,6 +154,7 @@
     <ClCompile Include="Admin.cpp" />
     <ClCompile Include="Database.cpp" />
     <ClCompile Include="Factory.cpp" />
+    <ClCompile Include="Lib.cpp" />
     <ClCompile Include="People Factory.cpp" />
     <ClCompile Include="User.cpp" />
   </ItemGroup>
@@ -161,6 +162,7 @@
     <ClInclude Include="Admin.h" />
     <ClInclude Include="Database.h" />
     <ClInclude Include="Factory.h" />
+    <ClInclude Include="Lib.h" />
     <ClInclude Include="User.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

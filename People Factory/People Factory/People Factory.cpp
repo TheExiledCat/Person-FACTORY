@@ -2,13 +2,25 @@
 //
 
 #include <iostream>
+
 #include "Admin.h"
 #include "Factory.h"
 #include "Database.h"
 int main()
 {
+#pragma region Initialization
+
+
+
 	Database* currentDatabase = new Database();
 	Factory* currentFactory = new Factory();
+	enum  loginState {
+		ADMIN,
+		USER,
+		LOGGED_OUT
+	};
+	loginState lS;
+	lS = ADMIN;
 	std::cout << "Hello new admin, fill in your name for initialization\n";
 	std::string name;
 	std::string password;
@@ -18,42 +30,52 @@ int main()
 	std::cout << "Password:\n";
 	std::cin >> password;
 	Admin* Director = new Admin(name, password);
-	std::cout << "Welcome to the User Factory," << Director->GetName() << "\n";
+
+	std::cout << "Welcome to the User Factory," << Director->GetName() << "\n" << "Logging in";
 	std::string input;
-	while (true) {
-	start:
-		int i=Director->GetMenuOptions();
-		switch (i) {
-		default: {
+#pragma endregion
+	while (true) {//enter loop
+		switch (lS) {
+		case ADMIN: {
+		start:
+			int i = Director->GetMenuOptions();
+			switch (i) {
+			default: {
+				std::cout << "Not a valid Option\n\n";
 				goto start;
 				break;
-		}
-		case 1: {
-			std::string name;
-			std::string password;
-			std::cout << "Creating new User\n" << "\n";
-			std::cout << "Insert name:\n";
-			std::cin >> name;
-			std::cout << "Insert password:\n";
-			std::cin >> password;
-			Director->RequestNewUser(name, password, *currentDatabase, *currentFactory);
-			break;
-		}
-		case 2: {
-			break;
-		}
-		case 3: {
-			break;
-		}
-		case 4: {
-			break;
-		}
-		}
-	}
-	
-	return 0;
-}
+			}
+			case 1: {
 
+
+				Director->RequestNewUser(currentDatabase, currentFactory);
+				goto start;
+			}
+			case 2: {
+
+
+				Director->RequestNewAdmin(currentDatabase, currentFactory);
+				goto start;
+			}
+			case 3: {
+				Director->ChangeUser(currentDatabase);
+				goto start;
+			}
+			case 4: {
+				currentDatabase->Show(Director);
+				goto start;
+			}
+
+			}
+			break;
+		}
+		case USER: {
+
+		}
+		}
+		return 0;
+	}
+}
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
 
