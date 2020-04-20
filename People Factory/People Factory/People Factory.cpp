@@ -33,7 +33,7 @@ int main()
 	std::cout << "Welcome to the User Factory," << Director->GetName() << "\n" << "Logging in\n\n";
 	currentDatabase->AddUser(Director);
 #pragma endregion
-	while (true) {//enter loop
+	while (true) {
 		
 		loop:
 		switch (lS) {
@@ -83,7 +83,7 @@ int main()
 			break;
 		}
 		case USER: {//gives u the mini game
-			Hangman(currentUser);
+			//Hangman(currentUser);
 			lS = LOGGED_OUT;
 			break;
 		}
@@ -156,7 +156,7 @@ int main()
 		}
 		
 		
-	}
+	}//main loop
 	return 0;
 }
 
