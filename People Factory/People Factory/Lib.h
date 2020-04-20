@@ -1,4 +1,7 @@
 #pragma once
 #include <string>
+#include "Database.h"
 
-bool Blank(std::string s);
+int LoginAsAdmin(std::string name, std::string password, Database* d);
+int LoginAsUser(std::string name, std::string password, Database* d);
+void Hangman(User*u);

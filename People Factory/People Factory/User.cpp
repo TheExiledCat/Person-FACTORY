@@ -17,15 +17,11 @@ std::string User::GetName()
 	return this->username;
 }
 
-std::string User::GetPassword(User a)
+std::string User::GetPassword()
 {
-	if (a.CheckAdmin() == true) {
 		return this->password;
-	}
-	else {
-		 std::cout << "Permission denied" << "\n";
-		 return "";
-	}
+	
+	
 		
 }
 

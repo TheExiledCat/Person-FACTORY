@@ -68,7 +68,7 @@ void Admin::RequestNewAdmin( Database* d, Factory * f)
 int Admin::GetMenuOptions()
 {
 	
-	std::cout << "Options:\n"<<"\n";
+	std::cout << "\nOptions:\n"<<"\n";
 	
 	for (int i = 0; i<std::size(this->options); i++) {
 		
@@ -130,5 +130,8 @@ void Admin::RequestUserDeletion(Database* d)
 	
 	
 }
+
+
+
 
 

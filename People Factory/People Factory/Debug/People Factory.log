@@ -1,3 +1,4 @@
 ﻿  People Factory.cpp
 C:\Users\voorbeeld\source\repos\Users\Person-FACTORY\People Factory\People Factory\People Factory.cpp(41,8): warning C4102: 'start': unreferenced label
+C:\Users\voorbeeld\source\repos\Users\Person-FACTORY\People Factory\People Factory\People Factory.cpp(146,40): warning C4101: 'e': unreferenced local variable
   People Factory.vcxproj -> C:\Users\voorbeeld\source\repos\Users\Person-FACTORY\People Factory\Debug\People Factory.exe

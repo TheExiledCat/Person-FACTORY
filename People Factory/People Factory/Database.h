@@ -9,10 +9,11 @@ public:
 	User* GetUser(int id);
 	void AddUser(User* u);
 	int GetSize();
-	void Show(User *a);
+	void Show();
 	void DeleteUser(int id);
-	bool ContainsUser(std::string name,bool admin);
-	User* GetUserByAccount(std::string name, std::string password,  bool admin);
+	bool ContainsUser(std::string name,std::string password,bool admin);
+	User* GetUserByAccount(std::string name, std::string password);
+
 private:
 	std::vector<User> users;
 };

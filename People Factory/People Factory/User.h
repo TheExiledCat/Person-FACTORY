@@ -8,7 +8,7 @@ public:
 	User(std::string name, std::string password);
 	~User();
 	std::string GetName();
-	std::string GetPassword(User a);
+	std::string GetPassword();
 	int GetID();
 	bool CheckAdmin();
 	void SetName(std::string name);
