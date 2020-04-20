@@ -1,0 +1,11 @@
+﻿  Admin.cpp
+C:\Users\voorbeeld\source\repos\Users\Person-FACTORY\People Factory\People Factory\Admin.cpp(73,19): warning C4018: '<': signed/unsigned mismatch
+C:\Users\voorbeeld\source\repos\Users\Person-FACTORY\People Factory\People Factory\Admin.cpp(84,28): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\voorbeeld\source\repos\Users\Person-FACTORY\People Factory\People Factory\Admin.cpp(89,37): warning C4101: 'e': unreferenced local variable
+C:\Users\voorbeeld\source\repos\Users\Person-FACTORY\People Factory\People Factory\Admin.cpp(110,38): warning C4101: 'e': unreferenced local variable
+  Generating code
+  4 of 225 functions ( 1.8%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    2 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  People Factory.vcxproj -> C:\Users\voorbeeld\source\repos\Users\Person-FACTORY\People Factory\Release\People Factory.exe

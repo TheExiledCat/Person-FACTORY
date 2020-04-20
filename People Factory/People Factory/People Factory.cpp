@@ -25,55 +25,110 @@ int main()
 	std::string name;
 	std::string password;
 	std::cout << "Name:\n";
-
-	std::cin >> name;
+	
+	std::getline(std::cin , name);
 	std::cout << "Password:\n";
-	std::cin >> password;
+	std::getline(std::cin , password);
 	Admin* Director = new Admin(name, password);
 
-	std::cout << "Welcome to the User Factory," << Director->GetName() << "\n" << "Logging in";
-	std::string input;
+	std::cout << "Welcome to the User Factory," << Director->GetName() << "\n" << "Logging in\n\n";
+	currentDatabase->AddUser(Director);
 #pragma endregion
 	while (true) {//enter loop
+		loop:
 		switch (lS) {
 		case ADMIN: {
 		start:
-			int i = Director->GetMenuOptions();
-			switch (i) {
-			default: {
-				std::cout << "Not a valid Option\n\n";
-				goto start;
-				break;
-			}
-			case 1: {
+			if (Director != NULL) {
+				int i = Director->GetMenuOptions();
+				switch (i) {
+				default: {
+					std::cout << "Not a valid Option\n\n";
+
+					break;
+				}
+				case 1: {
 
 
-				Director->RequestNewUser(currentDatabase, currentFactory);
-				goto start;
-			}
-			case 2: {
+					Director->RequestNewUser(currentDatabase, currentFactory);
+					break;
+				}
+				case 2: {
 
 
-				Director->RequestNewAdmin(currentDatabase, currentFactory);
-				goto start;
+					Director->RequestNewAdmin(currentDatabase, currentFactory);
+					break;
+				}
+				case 3: {
+					Director->ChangeUser(currentDatabase);
+					break;
+				}
+				case 4: {
+					currentDatabase->Show(Director);
+					break;
+				}
+				case 5: {
+					Director->RequestUserDeletion(currentDatabase);
+					break;
+				}
+				case 6: {
+					lS = LOGGED_OUT;
+					std::cout << "Logging out";
+					goto loop;
+				}
 			}
-			case 3: {
-				Director->ChangeUser(currentDatabase);
-				goto start;
+			
 			}
-			case 4: {
-				currentDatabase->Show(Director);
-				goto start;
-			}
-
+			else {
+				Director=Login(currentDatabase);
 			}
 			break;
 		}
 		case USER: {
+			break;
+		}
+		case LOGGED_OUT: {
+			std:: cout<<"Choose Option you want to make:\n\n";
+			std::cout << "1. Open person factory with admin account\n";
+			std::cout << "2. Open minigame as user\n";
+			std::cout << "3. Exit program\n";
+			std::string input;
+			std::cin >> input;
+			try {
+				
+			int choice = std::stoi(input);
+			switch (choice) {
+			case 1: {
 
+			}
+			}
+			}
+			catch (std::invalid_argument const& e) {
+				std::cout << "Not a valid option\n";
+
+				return;
+			}
+
+			break;
 		}
 		}
-		return 0;
+		
+		
+	}
+	return 0;
+}
+Admin* Login(Database * d,bool admin) {
+	std::cout << "Enter Username:\n";
+	std::cin.ignore();
+	std::string name;
+	std::string password;
+	std::getline(std::cin, name);
+	if (d->ContainsUser(name, admin)) {
+		std::getline(std::cin, password);
+		
+	}
+	else {
+		std::cout << "Failure logging in, username might be wrong";
 	}
 }
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

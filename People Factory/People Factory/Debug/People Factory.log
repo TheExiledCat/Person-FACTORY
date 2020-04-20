@@ -1,7 +1,3 @@
-﻿  Admin.cpp
-C:\Users\voorbeeld\source\repos\Users\Person-FACTORY\People Factory\People Factory\Admin.cpp(73,19): warning C4018: '<': signed/unsigned mismatch
-C:\Users\voorbeeld\source\repos\Users\Person-FACTORY\People Factory\People Factory\Admin.cpp(84,28): warning C4018: '<=': signed/unsigned mismatch
-  People Factory.cpp
-  Generating Code...
-C:\Users\voorbeeld\source\repos\Users\Person-FACTORY\People Factory\People Factory\Admin.cpp(89,37): warning C4101: 'e': unreferenced local variable
+﻿  People Factory.cpp
+C:\Users\voorbeeld\source\repos\Users\Person-FACTORY\People Factory\People Factory\People Factory.cpp(41,8): warning C4102: 'start': unreferenced label
   People Factory.vcxproj -> C:\Users\voorbeeld\source\repos\Users\Person-FACTORY\People Factory\Debug\People Factory.exe

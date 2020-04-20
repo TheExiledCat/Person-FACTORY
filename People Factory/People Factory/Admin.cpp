@@ -93,4 +93,42 @@ int Admin::GetMenuOptions()
 	}
 }
 
+void Admin::RequestUserDeletion(Database* d)
+{
+	std::cout << "What is the ID of the user you want to delete?:\n";
+	std::cin.ignore();
+	std::string input;
+	std::getline(std::cin, input);
+	int choice;
+	try {
+		choice = std::stoi(input);
+		if (choice >= 0 && choice < d->GetSize()) {
+		Confirm:
+			std::cout << "Are you sure you want to delete User " << d->GetUser(choice)->GetName() << "? y/n";
+			std::cin >> input;
+			if (input == "y") {
+				User* u = d->GetUser(choice);
+				d->DeleteUser(choice);
+				std::cout << "Deleted User at index " << u->GetID();
+				return;
+
+			}
+			else if (input == "n") {
+				return;
+			}
+			else {
+				goto Confirm;
+			}
+		}
+		
+	}
+	catch (std::invalid_argument const& e) {
+		std::cout << "No User with that ID\n";
+		
+		return;
+	}
+	
+	
+}
+
 
